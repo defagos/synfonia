@@ -1,0 +1,93 @@
+Development tools for Synfonia
+------------------------------
+This directory collects all development tools for building Synfonia for all supported
+platforms and compilers.
+
+To generate a complete development environment of Synfonia for a specific compiler / platform,
+follow the steps below.
+
+1) Generation of the build scripts
+   -------------------------------
+Simply run the generate* file corresponding to your platform and the compiler you target. The
+development environments are generated in completely separated folders. Compilation happens
+separately for each environment, no overlap can occur. You can therefore run several different
+development environments and compilers in parallel.
+
+Currently the following generate* files are available:
+  a) Windows operating systems
+    - generateMSVC9x86.bat: Generates the x86 solution for Microsoft Visual C++ 2008
+	- generateMSVC9x64.bat: Generates the x64 solution for Microsoft Visual C++ 2008
+    - generateMSVC10x86.bat: Generates the x86 solution for Microsoft Visual C++ 2010
+	- generateMSVC10x64.bat: Generates the x64 solution for Microsoft Visual C++ 2010
+    - generateMinGW.bat: Generates the x86 makefiles for the MinGW compiler. No x64 support is
+	                     currently available: Though an x64 version of the MinGW compiler exists
+						 (http://sourceforge.net/projects/mingw-w64/), no correspondig CMake
+						 generator exists.
+	- generateUnixMakefiles.sh (Cygwin environment): Generates the Unix makefiles. No x64 support
+	                                                 currently available
+													 
+  b) Linux / Unix
+    - generateUnixMakefiles.sh: Generates the Unix makefiles
+						 
+Note that the generation will fail due to missing CMake cache variables. This will be fixed in
+step 3.
+	
+2) Installation and compilation of external libraries
+   --------------------------------------------------
+This project currently depends on the following external libraries:
+  - Boost (www.boost.org)
+  - Google Test (http://code.google.com/p/googletest/)
+Tools and instructions for compiling these libraries are available in the tools subfolder. This
+should help you compile these external libraries easily in all flavors required by the development.
+Once all external libraries you require have been successfully compiled, proceed to step 3.
+
+3) Pointing the development environment at the external libraries
+   --------------------------------------------------------------
+To configure the development environment, we need to define variables in the CMake cache files
+CMakeCache.txt, generated for each environment in step 1. A CMake cache file is only created the
+first time an environment is generated and will not be overwritten unless you delete it. Each
+environment has its own specific cache file.
+   
+There are several ways to edit a CMakeCache.txt file in order to add the variables we need, for
+example:
+  a) Use the CMake GUI cache configuration tool: Open the CMake cache configuration tool,
+     and set
+	   - the main Synfonia directory (where the top CMakeLists.txt is located) as source code
+	     folder
+	   - one of the directories generated in step 1 as location where the binaries will be built
+	     (since this directory is different from the main Synfonia directory, the build will
+		 happen out-of-source)
+     Click on the "Configure" button at the bottom of the window. Read the error message,
+	 copy/paste the variable name whose definition is missing, and Add an entry for it by
+	 following the instructions given in the error message. Once the variable has been set repeat
+	 the "Configure" button step, until all errors have been fixed. You can then click on the
+	 Generate button to create the build scripts.
+	 
+	 You must repeat this whole procedure for all environments which you want to work with. Once
+	 you are done, open the CMakeLists.txt files and copy/paste the variables you have set to
+	 some backup file. Should you need to generate the development environment again, you would
+	 not have to perform step 3 anymore, see b)
+  b) Fill in the cache_*.txt files you located under the config directory and, once done, copy
+     their contents to the CMakeCache.txt files. Now execute the generate* file again, you
+	 should get no error again and the development environments should be properly generated.
+	 Remark: For Unix Makefiles, always provide full paths relative to /, do not use ~/ for
+	         example. During my tests, libraries registered with a ~/ in their path were not
+			 correctly detected by the linker
+	 
+4) Compiling
+   ---------
+The development environments are now ready. You can compile the source files, as follows:
+  a) Microsoft Visual C++ compilers: Open the solution and build it, or use devenv.exe /Build
+     from the Visual Studio command prompt
+  b) MinGW: Switch to a folder containing a Makefile, and use
+        %YOUR_MINGW_PATH%\bin\mingw32-make.exe
+  c) Linux / Unix / Cygwin: Use make
+The compiled binary files are put in separate bin, dll and lib folders in the main Synfonia
+directory. Subfolders are created to cleanly separate the development environments and the
+configuration currently supported (default CMake configurations):
+  - Debug: Non-optimized code with debug information. No inlining
+  - RelWithDebInfo: Code optimized for speed with debug information. Minimum inlining
+                    (pre-release code)
+  - MinSizeRel: Code optimized for size, minimum inlining. No debug information.
+  - Release: Code optimized for speed, inlining enabled. No debug information.
+Note that depending on the platform some (or all) configurations might be the same.

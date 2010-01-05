@@ -1,0 +1,8 @@
+Tools for compiling external libraries
+--------------------------------------
+
+This directory collects various tools to help you build external libararies used by Synfonia.
+Please refer to the README in each subdirectory for more information.
+
+Currently the following tools are available:
+  - gtest-cmake: CMake build files for Google Test

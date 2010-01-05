@@ -1,0 +1,24 @@
+Custom CMake file for Google Test
+---------------------------------
+This file can be used to generate compilation scripts for Google Test on various platforms
+using CMake (wwww.cmake.org)
+
+Instructions:
+1) Download Google Test from the official website (http://code.google.com/p/googletest/)
+2) Unzip the Google Test files somewhere
+3) Copy the contents of the gtest-cmake directory to the main Google Test directory (gtest-x.x.x)
+4) Switch to the main Google Test directory and run the ./devtools/generate* file(s) corresponding
+   to the desired platform(s) to generate directories containing the corresponding compilation
+   scripts
+5) Switch to one of those directories and compile the binaries, e.g.
+     - Microsoft Visual Studio: Open the .sln file and build it, or use devenv.exe /build from
+	   the Visual Studio command prompt
+	 - MinGW: run mingw32-make
+	 - Unix / Linux / Cygwin: run make
+6) The generated binary files will be saved under
+     <main Google Test directory>/bin
+	 <main Google Test directory>/dll
+     <main Google Test directory>/lib
+	 
+Tested with Google Test 1.40.0. So simple it should work seamlessly with prior and future
+versions as well.
