@@ -12,9 +12,9 @@ rem Generate the Microsoft Visual Studio 2008 solution
 echo.
 echo.Generating Visual Studio 2008 solution (32 bits)
 echo.------------------------------------------------
-mkdir %SYNFONIA_DEV_DIR%\MSVC9x86
-cd %SYNFONIA_DEV_DIR%\MSVC9x86
-cmake -G "Visual Studio 9 2008" %SYNFONIA_ROOT_DIR%
+mkdir "%SYNFONIA_DEV_DIR%\MSVC9x86"
+cd "%SYNFONIA_DEV_DIR%\MSVC9x86"
+cmake -G "Visual Studio 9 2008" "%SYNFONIA_ROOT_DIR%"
 
 rem Back to dev directory
-cd %SYNFONIA_DEV_DIR%
+cd "%SYNFONIA_DEV_DIR%"

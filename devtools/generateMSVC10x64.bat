@@ -12,9 +12,9 @@ rem Generate the Microsoft Visual Studio 2010 solution
 echo.
 echo.Generating Visual Studio 2010 solution (64 bits)
 echo.------------------------------------------------
-mkdir %SYNFONIA_DEV_DIR%\MSVC10x64
-cd %SYNFONIA_DEV_DIR%\MSVC10x64
-cmake -G "Visual Studio 10 Win64" %SYNFONIA_ROOT_DIR%
+mkdir "%SYNFONIA_DEV_DIR%\MSVC10x64"
+cd "%SYNFONIA_DEV_DIR%\MSVC10x64"
+cmake -G "Visual Studio 10 Win64" "%SYNFONIA_ROOT_DIR%"
 
 rem Back to dev directory
-cd %SYNFONIA_DEV_DIR%
+cd "%SYNFONIA_DEV_DIR%"

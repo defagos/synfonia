@@ -6,8 +6,6 @@
 
 # Set directories
 SYNFONIA_DEV_DIR=`pwd`
-# Small issue with CMake when executed in Cygwin: Path /cygdrive/the/path is not found,
-# i.e. $GOOGLE_TEST_DEV_DIR/.. does not work. We directly use relative paths below
 
 # Generate the Unix makefile for all configurations
 echo
