@@ -75,49 +75,49 @@ PROJECT(gtest)
 
 # Visual Studio 2010 solution (32-bits)
 IF(${CMAKE_GENERATOR} STREQUAL "Visual Studio 10")
-	SET(CONST_PLATFORM MSVC10x86)
-	# The Visual Studio solution generators automatically generate separate output directories for
-	# each configuration. We do not need to generate the 3rd directory level
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
+    SET(CONST_PLATFORM MSVC10x86)
+    # The Visual Studio solution generators automatically generate separate output directories for
+    # each configuration. We do not need to generate the 3rd directory level
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
 # Visual Studio 2010 solution (64-bits)
 ELSEIF(${CMAKE_GENERATOR} STREQUAL "Visual Studio 10 Win64")
-	SET(CONST_PLATFORM MSVC10x64)
-	# The Visual Studio solution generators automatically generate separate output directories for
-	# each configuration. We do not need to generate the 3rd directory level
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
+    SET(CONST_PLATFORM MSVC10x64)
+    # The Visual Studio solution generators automatically generate separate output directories for
+    # each configuration. We do not need to generate the 3rd directory level
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
 # Visual Studio 2008 solution (32-bits)
 ELSEIF(${CMAKE_GENERATOR} STREQUAL "Visual Studio 9 2008")
-	SET(CONST_PLATFORM MSVC9x86)
-	# The Visual Studio solution generators automatically generate separate output directories for
-	# each configuration. We do not need to generate the 3rd directory level
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
+    SET(CONST_PLATFORM MSVC9x86)
+    # The Visual Studio solution generators automatically generate separate output directories for
+    # each configuration. We do not need to generate the 3rd directory level
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
 # Visual Studio 2008 solution (64-bits)
 ELSEIF(${CMAKE_GENERATOR} STREQUAL "Visual Studio 9 2008 Win64")
-	SET(CONST_PLATFORM MSVC9x64)
-	# The Visual Studio solution generators automatically generate separate output directories for
-	# each configuration. We do not need to generate the 3rd directory level
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
+    SET(CONST_PLATFORM MSVC9x64)
+    # The Visual Studio solution generators automatically generate separate output directories for
+    # each configuration. We do not need to generate the 3rd directory level
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM})
 # MinGW compiler (32-bits)
 ELSEIF(${CMAKE_GENERATOR} STREQUAL "MinGW Makefiles")
-	SET(CONST_PLATFORM MinGW)
-	# The build configuration must be explicitly specified
-	IF (NOT CMAKE_BUILD_TYPE)
-		MESSAGE(FATAL_ERROR "Missing configuration. Add -DCMAKE_BUILD_TYPE when calling cmake")
-	ENDIF()
-	# We need to generate all directory levels
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM}/${CMAKE_BUILD_TYPE})
+    SET(CONST_PLATFORM MinGW)
+    # The build configuration must be explicitly specified
+    IF (NOT CMAKE_BUILD_TYPE)
+        MESSAGE(FATAL_ERROR "Missing configuration. Add -DCMAKE_BUILD_TYPE when calling cmake")
+    ENDIF()
+    # We need to generate all directory levels
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM}/${CMAKE_BUILD_TYPE})
 # Unix Makefiles
 ELSEIF (${CMAKE_GENERATOR} STREQUAL "Unix Makefiles")
-	SET(CONST_PLATFORM UnixMakefiles)
-	# The build configuration must be explicitly specified
-	IF (NOT CMAKE_BUILD_TYPE)
-		MESSAGE(FATAL_ERROR "Missing configuration. Add -DCMAKE_BUILD_TYPE when calling cmake")
-	ENDIF()
-	# We need to generate all directory levels
-	SET(OUTPUT_SUBDIR ${CONST_PLATFORM}/${CMAKE_BUILD_TYPE})
+    SET(CONST_PLATFORM UnixMakefiles)
+    # The build configuration must be explicitly specified
+    IF (NOT CMAKE_BUILD_TYPE)
+        MESSAGE(FATAL_ERROR "Missing configuration. Add -DCMAKE_BUILD_TYPE when calling cmake")
+    ENDIF()
+    # We need to generate all directory levels
+    SET(OUTPUT_SUBDIR ${CONST_PLATFORM}/${CMAKE_BUILD_TYPE})
 # For all generators we do not support officially: error
 ELSE()
-	MESSAGE(FATAL_ERROR "The generator ${CMAKE_GENERATOR} is currently not supported for Synfonia")
+    MESSAGE(FATAL_ERROR "The generator ${CMAKE_GENERATOR} is currently not supported for Synfonia")
 ENDIF()
 
 # Set the output directories
