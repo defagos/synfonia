@@ -10,6 +10,8 @@ Instructions:
 4) Switch to the main Google Test directory and run the ./devtools/generate* file(s) corresponding
    to the desired platform(s) to generate directories containing the corresponding compilation
    scripts
+   Remark: You might have to convert the .sh file to Unix format (dos2unix) and to give it
+           execution permission.
 5) Switch to one of those directories and compile the binaries, e.g.
      - Microsoft Visual Studio: Open the .sln file and build it, or use devenv.exe /build from
        the Visual Studio command prompt

@@ -18,5 +18,5 @@ INCLUDE_DIRECTORIES_GOOGLE_TEST()
 TARGET_LINK_LIBRARIES_GOOGLE_TEST(core_test)
 
 # Add to unit tests
-ADD_TEST(NAME some_test
-    COMMAND core_test)
+ADD_TEST(core_test
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/core_test)
