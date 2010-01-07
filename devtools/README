@@ -16,26 +16,26 @@ development environments and compilers in parallel.
 Currently the following generate* files are available:
   a) Windows operating systems
     - generateMSVC9x86.bat: Generates the x86 solution for Microsoft Visual C++ 2008
-	- generateMSVC9x64.bat: Generates the x64 solution for Microsoft Visual C++ 2008
+    - generateMSVC9x64.bat: Generates the x64 solution for Microsoft Visual C++ 2008
     - generateMSVC10x86.bat: Generates the x86 solution for Microsoft Visual C++ 2010
-	- generateMSVC10x64.bat: Generates the x64 solution for Microsoft Visual C++ 2010
+    - generateMSVC10x64.bat: Generates the x64 solution for Microsoft Visual C++ 2010
     - generateMinGW.bat: Generates the x86 makefiles for the MinGW compiler. No x64 support is
-	                     currently available: Though an x64 version of the MinGW compiler exists
-						 (http://sourceforge.net/projects/mingw-w64/), no correspondig CMake
-						 generator exists.
-	- generateUnixMakefiles.sh (Cygwin environment): Generates the Unix makefiles. No x64 support
-	                                                 currently available
-													 
+                        currently available: Though an x64 version of the MinGW compiler exists
+                         (http://sourceforge.net/projects/mingw-w64/), no correspondig CMake
+                         generator exists.
+    - generateUnixMakefiles.sh (Cygwin environment): Generates the Unix makefiles. No x64 support
+                                                     currently available
+                                                     
   b) Linux / Unix
     - generateUnixMakefiles.sh: Generates the Unix makefiles
-						 
+                         
 Note that the generation will fail due to missing CMake cache variables. This will be fixed in
 step 3.
 
 Remark: Some Visual Studio environments might not be available depending on the version you are
         running (e.g. the 64-bit compiler is not provided with the free Express version of Visual
-		Studio 2008). Check the output produced by the generateMSVC* batch files.
-	
+        Studio 2008). Check the output produced by the generateMSVC* batch files.
+    
 2) Installation and compilation of external libraries
    --------------------------------------------------
 This project currently depends on the following external libraries:
@@ -56,28 +56,28 @@ There are several ways to edit a CMakeCache.txt file in order to add the variabl
 example:
   a) Use the CMake GUI cache configuration tool: Open the CMake cache configuration tool,
      and set
-	   - the main Synfonia directory (where the top CMakeLists.txt is located) as source code
-	     folder
-	   - one of the directories generated in step 1 as location where the binaries will be built
-	     (since this directory is different from the main Synfonia directory, the build will
-		 happen out-of-source)
+       - the main Synfonia directory (where the top CMakeLists.txt is located) as source code
+         folder
+       - one of the directories generated in step 1 as location where the binaries will be built
+         (since this directory is different from the main Synfonia directory, the build will
+         happen out-of-source)
      Click on the "Configure" button at the bottom of the window. Read the error message,
-	 copy/paste the variable name whose definition is missing, and Add an entry for it by
-	 following the instructions given in the error message. Once the variable has been set repeat
-	 the "Configure" button step, until all errors have been fixed. You can then click on the
-	 Generate button to create the build scripts.
-	 
-	 You must repeat this whole procedure for all environments which you want to work with. Once
-	 you are done, open the CMakeLists.txt files and copy/paste the variables you have set to
-	 some backup file. Should you need to generate the development environment again, you would
-	 not have to perform step 3 anymore, see b)
+     copy/paste the variable name whose definition is missing, and Add an entry for it by
+     following the instructions given in the error message. Once the variable has been set repeat
+     the "Configure" button step, until all errors have been fixed. You can then click on the
+     Generate button to create the build scripts.
+     
+     You must repeat this whole procedure for all environments which you want to work with. Once
+     you are done, open the CMakeLists.txt files and copy/paste the variables you have set to
+     some backup file. Should you need to generate the development environment again, you would
+     not have to perform step 3 anymore, see b)
   b) Fill in the cache_*.txt files you located under the config directory and, once done, copy
      their contents to the CMakeCache.txt files. Now execute the generate* file again, you
-	 should get no error again and the development environments should be properly generated.
-	 Remark: For Unix Makefiles, always provide full paths relative to /, do not use ~/ for
-	         example. During my tests, libraries registered with a ~/ in their path were not
-			 correctly detected by the linker
-	 
+     should get no error again and the development environments should be properly generated.
+     Remark: For Unix Makefiles, always provide full paths relative to /, do not use ~/ for
+             example. During my tests, libraries registered with a ~/ in their path were not
+             correctly detected by the linker
+     
 4) Compiling
    ---------
 The development environments are now ready. You can compile the source files, as follows:

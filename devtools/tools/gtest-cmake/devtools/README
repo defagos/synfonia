@@ -12,13 +12,13 @@ Instructions:
    scripts
 5) Switch to one of those directories and compile the binaries, e.g.
      - Microsoft Visual Studio: Open the .sln file and build it, or use devenv.exe /build from
-	   the Visual Studio command prompt
-	 - MinGW: run mingw32-make
-	 - Unix / Linux / Cygwin: run make
+       the Visual Studio command prompt
+     - MinGW: run mingw32-make
+     - Unix / Linux / Cygwin: run make
 6) The generated binary files will be saved under
      <main Google Test directory>/bin
-	 <main Google Test directory>/dll
+     <main Google Test directory>/dll
      <main Google Test directory>/lib
-	 
+     
 Tested with Google Test 1.40.0. So simple it should work seamlessly with prior and future
 versions as well.
