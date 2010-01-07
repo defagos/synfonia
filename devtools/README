@@ -20,7 +20,7 @@ Currently the following generate* files are available:
     - generateMSVC10x86.bat: Generates the x86 solution for Microsoft Visual C++ 2010
     - generateMSVC10x64.bat: Generates the x64 solution for Microsoft Visual C++ 2010
     - generateMinGW.bat: Generates the x86 makefiles for the MinGW compiler. No x64 support is
-                        currently available: Though an x64 version of the MinGW compiler exists
+                         currently available: Though an x64 version of the MinGW compiler exists
                          (http://sourceforge.net/projects/mingw-w64/), no correspondig CMake
                          generator exists.
     - generateUnixMakefiles.sh (Cygwin environment): Generates the Unix makefiles. No x64 support
