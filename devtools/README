@@ -31,6 +31,10 @@ Currently the following generate* files are available:
 						 
 Note that the generation will fail due to missing CMake cache variables. This will be fixed in
 step 3.
+
+Remark: Some Visual Studio environments might not be available depending on the version you are
+        running (e.g. the 64-bit compiler is not provided with the free Express version of Visual
+		Studio 2008). Check the output produced by the generateMSVC* batch files.
 	
 2) Installation and compilation of external libraries
    --------------------------------------------------
