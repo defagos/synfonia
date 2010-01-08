@@ -31,10 +31,10 @@ inline ICloneable::~ICloneable()
  * Helper macro for implementing the clone interface in classes
  * implementing the ICloneable interface
  */
-#define CLONE_IMPL(className) \
-  className *clone() const \
-  { \
-    return new className(*this); \
+#define CLONE_IMPL(className)                 \
+  className *clone() const                    \
+  {                                           \
+    return new className(*this);              \
   }
 
 #endif

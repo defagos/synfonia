@@ -1,14 +1,16 @@
 # CMake build rules for the core unit tests
 # -----------------------------------------
 
-# Public includes
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)
-
 # Test source files
 ADD_EXECUTABLE(core_test
     main
     clone_test
+    exception_test
     platform_test)
+
+# Use core library
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)
+TARGET_LINK_LIBRARIES(core_test core)
 
 # Use Boost
 INCLUDE_DIRECTORIES_BOOST()

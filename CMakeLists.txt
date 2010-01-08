@@ -230,6 +230,9 @@ FUNCTION(TARGET_LINK_LIBRARIES_GOOGLE_TEST _target)
     PFCT_EXT_TARGET_LINK_LIBRARIES(${_target} GOOGLE_TEST)
 ENDFUNCTION()
 
+# Add projects
+ADD_SUBDIRECTORY(src/core)
+
 # Enable CMake unit test support
 ENABLE_TESTING()
 
