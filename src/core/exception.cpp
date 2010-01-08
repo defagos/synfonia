@@ -1,6 +1,7 @@
 #include "core/exception.h"
 
 #include <iostream>
+#include <typeinfo>
 
 namespace core {
 
