@@ -8,10 +8,10 @@
 // is still useful, we make the one from Boost available
 #include <boost/scoped_ptr.hpp>
 
-// Until all compilers implement smart pointers, we need to cope with those which
+// Until all compilers implement tr1 smart pointers, we need to cope with those which
 // don't
 #if PLATFORM_USE_NATIVE_TR1
-  // Use native smart pointer implementation
+  // Use native smart pointer implementations
   #include <memory>
 #else
   // Use Boost smart pointer implementations
