@@ -6,6 +6,7 @@ ADD_EXECUTABLE(core_test
     main
     clone_test
     exception_test
+    logger_test
     platform_test)
 
 # Use core library

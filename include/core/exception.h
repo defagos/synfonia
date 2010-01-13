@@ -3,7 +3,7 @@
 #define EXCEPTION_H
 
 #include <exception>
-#include <ostream>
+#include <iosfwd>
 #include <string>
 
 namespace core {

@@ -11,22 +11,19 @@ namespace log {
 
 class LoggingEvent;
 
-class Appender : private boost::noncopyable {
+class IAppender : private boost::noncopyable {
 public:
-  std::string getName() const;
   virtual void append(const LoggingEvent &logEvent) = 0;
-
-protected:
-  Appender(const std::string &name);
-
-private:
-  std::string m_name;
+  ~IAppender();
 };
 
-inline std::string Appender::getName() const
-{
-  return m_name;
-}
+inline IAppender::~IAppender()
+{}
+
+class ConsoleAppender : public IAppender {
+public:
+  virtual void append(const LoggingEvent &logEvent);
+};
 
 } // namespace log
 } // namespace core
