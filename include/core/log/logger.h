@@ -181,21 +181,21 @@ inline std::string MutableLogger<LockingPolicy>::getName() const
 template<class LockingPolicy>
 LoggingLevel MutableLogger<LockingPolicy>::getLoggingLevel() const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   return m_loggingLevel;
 }
 
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::setLoggingLevel(const LoggingLevel &loggingLevel)
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   m_loggingLevel = loggingLevel;
 }
 
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::trace(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::trace()) {
     log(LoggingLevel::trace(), message);
   }
@@ -204,7 +204,7 @@ void MutableLogger<LockingPolicy>::trace(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::debug(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::debug()) {
     log(LoggingLevel::debug(), message);
   }
@@ -213,7 +213,7 @@ void MutableLogger<LockingPolicy>::debug(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::info(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::info()) {
     log(LoggingLevel::info(), message);
   }
@@ -222,7 +222,7 @@ void MutableLogger<LockingPolicy>::info(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::warning(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::warning()) {
     log(LoggingLevel::warning(), message);
   }
@@ -231,7 +231,7 @@ void MutableLogger<LockingPolicy>::warning(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::error(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::error()) {
     log(LoggingLevel::error(), message);
   }
@@ -240,7 +240,7 @@ void MutableLogger<LockingPolicy>::error(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::fatal(const std::string &message) const
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   if (m_loggingLevel <= LoggingLevel::fatal()) {
     log(LoggingLevel::fatal(), message);
   }
@@ -249,7 +249,7 @@ void MutableLogger<LockingPolicy>::fatal(const std::string &message) const
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::addAppender(const std::string &name)
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
 
   // TODO: Get appender and attach it
 }
@@ -257,7 +257,7 @@ void MutableLogger<LockingPolicy>::addAppender(const std::string &name)
 template<class LockingPolicy>
 void MutableLogger<LockingPolicy>::removeAppender(const std::string &name)
 {
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   m_appenders.erase(name);
 }
 
@@ -266,7 +266,7 @@ void MutableLogger<LockingPolicy>::log(const LoggingLevel &loggingLevel, const s
 {
   LoggingEvent loggingEvent(loggingLevel, message);
 
-  LockingPolicy::Lock lock;
+  typename LockingPolicy::Lock lock;
   for (IAppenderMap::const_iterator it = m_appenders.begin();
       it != m_appenders.end(); ++it) {
     it->second->append(loggingEvent);
