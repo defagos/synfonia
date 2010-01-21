@@ -1,8 +1,8 @@
 @echo off
 
-rem ************************************************************
-rem General makefile generator for Windows platforms
-rem ************************************************************
+rem **********************************************************************
+rem General CMake (out-of-source) makefile generator for Windows platforms
+rem **********************************************************************
 
 rem Check that the maximum number of parameters has not been exceeded
 if not "%4"=="" goto Usage
@@ -10,11 +10,11 @@ if not "%4"=="" goto Usage
 rem Directory where the main CMakeLists.txt file resides (converted to absolute path)
 set CMAKELISTS_DIR=%~f2
 
-rem Directory where the output files must be saved (converted to absolute path)
-set OUTPUT_DIR=%~f3
-
 rem Check that it contains a CMakeLists.txt file
 if not exist "%CMAKELISTS_DIR%\CMakeLists.txt" goto NotExist
+
+rem Directory where the output files must be saved (converted to absolute path)
+set OUTPUT_DIR=%~f3
 
 rem Set up the CMake generator according to the environment
 set ENVIRONMENT_NAME=%1
