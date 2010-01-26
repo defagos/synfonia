@@ -205,7 +205,23 @@ ENDFUNCTION()
 # Function for adding Boost includes to a project
 # The include path is set using the cache variable EXT_BOOST_INCLUDE
 FUNCTION(INCLUDE_DIRECTORIES_BOOST)
+    # Disable auto-linking; auto-linking is a nice idea and looks appealing, but this pragma-based
+    # trick does not work on all platforms. And more importantly it does not offer the granularity
+    # we need. We therefore disable it for all Boost libraries.
+    # Moreover, sometimes linking is not required, including headers suffices to benefit
+    # from some features of a library. In such cases auto-linking would typically force the
+    # linker to find the lib file (otherwise the link fails).
+    # For more information on Boost auto-linking:
+    #   http://www.boost.org/development/separate_compilation.html
+    ADD_DEFINITIONS(-DBOOST_ALL_NO_LIB)
+
     PFCT_EXT_INCLUDE_DIRECTORIES(BOOST)
+ENDFUNCTION()
+
+# Function for linking a project to the Boost thread library
+# The include path is set using the cache variable EXT_GOOGLE_TEST_INCLUDE
+FUNCTION(TARGET_LINK_LIBRARIES_BOOST_THREAD _target)    
+    PFCT_EXT_TARGET_LINK_LIBRARIES(${_target} BOOST_THREAD)
 ENDFUNCTION()
 
 # Function for adding Google Test includes to a project

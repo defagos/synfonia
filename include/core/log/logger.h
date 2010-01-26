@@ -3,7 +3,7 @@
 #define LOGGER_H
 
 #include <boost/noncopyable.hpp>
-//TODO #include <boost/thread/mutex.hpp>
+#include <boost/thread/mutex.hpp>
 #include <string>
 #include <utility>
 
@@ -109,17 +109,15 @@ public:
   public:
     Lock()
     {
-      //TODO
-      //m_mutex.lock();
+      m_mutex.lock();
     }
     ~Lock()
     {
-      //TODO
-      //m_mutex.unlock();
+      m_mutex.unlock();
     }
 
   private:
-    //boost::mutex m_mutex;
+    boost::mutex m_mutex;
   };
 
 protected:

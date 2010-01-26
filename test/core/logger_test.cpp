@@ -13,4 +13,7 @@ TEST(Logger, someTest)
   shared_ptr<ILogger> pLogger(new Logger("DummyLogger"));
 
   pLogger->error("This is an error");
+
+  shared_ptr<ILogger> pThreadSafeLogger(new MutableLogger<LockOnAccess>("ThreadSafeLogger"));
+  pThreadSafeLogger->error("This is another error");
 }
