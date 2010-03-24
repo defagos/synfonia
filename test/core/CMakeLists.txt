@@ -6,8 +6,7 @@ ADD_EXECUTABLE(core_test
     main
     clone_test
     exception_test
-    logger_test
-    platform_test)
+    float_test)
 
 # Use core library
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)

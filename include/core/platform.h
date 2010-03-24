@@ -2,6 +2,8 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
+#include <boost/static_assert.hpp>
+
 /**
  * Integer types
  */
@@ -36,6 +38,13 @@
   typedef long long int64;
   typedef unsigned long long uint64;
 #endif
+
+/* Check integer sizes */
+BOOST_STATIC_ASSERT(sizeof(int8) == 1);
+BOOST_STATIC_ASSERT(sizeof(int16) == 2);
+BOOST_STATIC_ASSERT(sizeof(int32) == 4);
+BOOST_STATIC_ASSERT(sizeof(int64) == 8);
+
 
 /**
  * Implementation of Technical Report 1 (std::tr1)
